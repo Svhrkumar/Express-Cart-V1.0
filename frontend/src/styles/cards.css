@@ -1,0 +1,37 @@
+.card {
+	border: 0.1rem #c0c0c0 solid;
+	background-color: #ffffff;
+	border-radius: 0.5rem;
+	margin: 3rem;
+}
+.card-body {
+	padding: 2rem;
+	margin-top: auto;
+}
+.card-body > * {
+	margin-bottom: 0.5rem;
+}
+.card-image-ctn {
+	height: 9rem;
+	width: 9rem;
+
+	padding: 2rem 4rem;
+	display: grid;
+	place-items: center;
+}
+.price {
+	font-size: 2rem;
+}
+/* Rating */
+.rating span {
+	color: #f0c040;
+	margin: 0.1rem;
+}
+/* Image */
+img {
+	border-radius: 0.5rem;
+}
+
+.row.center {
+	justify-content: center;
+}

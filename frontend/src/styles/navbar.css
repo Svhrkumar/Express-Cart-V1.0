@@ -1,0 +1,28 @@
+header {
+    grid-area: header;
+    background: transparent linear-gradient(90deg, #F4BE2C 0% , #E07C24 100%)0% 0%;
+    height:5rem;
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  a.brand {
+      margin: 5px 60px;
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+
+  .lists{
+    margin: 10px 40px;
+    color: #ffffff;
+    font-size: medium;
+    font-weight: 500;
+}
+a {
+ text-decoration: none;
+}
