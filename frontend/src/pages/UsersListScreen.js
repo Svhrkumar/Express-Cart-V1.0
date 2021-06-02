@@ -15,7 +15,7 @@ const UsersListScreen = () => {
 	const userUpdate = useSelector((state) => state.userUpdate);
 	const userDelete = useSelector((state) => state.userDelete);
 	const dispatch = useDispatch();
-
+	const history = useHistory();
 	const { loading, error, users } = usersList;
 	const {
 		loading: loadingUpdate,

@@ -9,6 +9,7 @@ import { createOffersAction } from '../actions/offersAction';
 import { ADD_CREATE_RESET } from '../types/type';
 
 const OffersUploadScreen = () => {
+	const history = useHistory();
 	const [offerName, setOfferName] = useState('');
 	const [occassion, setOccassion] = useState('');
 	const [category, setCategory] = useState('');
@@ -35,7 +36,7 @@ const OffersUploadScreen = () => {
 	};
 	useEffect(() => {
 		if (success) {
-			window.location.href = '/offers/Manager';
+			history.push('/offers/Manager');
 		}
 		dispatch({ type: ADD_CREATE_RESET });
 	}, [success]);
@@ -60,7 +61,7 @@ const OffersUploadScreen = () => {
 		}
 	};
 	const cancelHandler = () => {
-		window.location.href = '/productsmanager';
+		history.push('/productsmanager');
 	};
 	console.log('-------available size----', typeof availableSize);
 	return (

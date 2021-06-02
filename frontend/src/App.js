@@ -1,6 +1,4 @@
 import React from 'react';
-import './App.css';
-
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Products from './components/Products';
@@ -14,7 +12,7 @@ import { useSelector } from 'react-redux';
 import Registration from './pages/Registraion';
 import ShippingAddress from './pages/ShippingAddress';
 import PaymentMethodScreen from './pages/PaymentMethodScreen';
-
+import './App.css';
 import OrderScreen from './pages/OrderScreen';
 import OrderStatusScreen from './pages/OrderStatusScreen';
 import OrderHistory from './pages/OrderHistory';
@@ -35,9 +33,7 @@ import SubNavbar from './components/SubNavbar';
 
 function App() {
 	const user = useSelector((state) => state.user);
-	require('react-dom');
-	window.React2 = require('react');
-	console.log(window.React1 === window.React2);
+
 	console.log(
 		'-------------app user---------',
 		user && user.user && user.user.name

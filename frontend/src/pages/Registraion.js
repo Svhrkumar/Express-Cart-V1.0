@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import login from '../images/login.png';
+import login from '../images/login-illustartor.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerAction, signinAction } from '../actions/userActions';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import '../index.css';
 
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-
+import { Link } from 'react-router-dom';
 const Registration = (props) => {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
@@ -19,6 +19,7 @@ const Registration = (props) => {
 	const user = useSelector((state) => state.user);
 	const { loading, error } = user;
 
+	const history = useHistory();
 	console.log('...........user response ----------', user);
 
 	console.log('...........user info response ----------', error);
@@ -35,7 +36,7 @@ const Registration = (props) => {
 	};
 	useEffect(() => {
 		if (user.user) {
-			window.location.href = `${redirect}`;
+			props.history.push(redirect);
 		}
 	}, [props.history, redirect, user]);
 

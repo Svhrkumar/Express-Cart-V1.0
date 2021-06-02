@@ -53,8 +53,8 @@ app.get('/api/config/paypal', (req, res) => {
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 //Server
-const port = process.env.PORT || 6000;
-app.listen(6000, () => {
+const port = process.env.PORT || 9000;
+app.listen(9000, () => {
 	console.log(`server is running at http://localhost:${port}`);
 });
 app.use((err, req, res, next) => {
