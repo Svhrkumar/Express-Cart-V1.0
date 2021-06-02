@@ -12,6 +12,7 @@ import { CART_EMPTY, USER_ORDER_DELETE_RESET } from '../types/type';
 const OrderListUsers = () => {
 	const dispatch = useDispatch();
 
+	const history = useHistory();
 	const orderListUser = useSelector((state) => state.orderListUser);
 	const userOrderDelete = useSelector((state) => state.userOrderDelete);
 	const {
@@ -75,7 +76,7 @@ const OrderListUsers = () => {
 										type='button'
 										className='details-btn'
 										onClick={() => {
-											window.location.href = `/delivery/${order._id}`;
+											history.push(`/delivery/${order._id}`);
 										}}>
 										Details
 									</button>

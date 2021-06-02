@@ -5,15 +5,15 @@ import {
 	addShippingAddress,
 	saveTotalPrice,
 } from '../actions/cartAction';
-
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 const Cart = (props) => {
 	const [addAddress, setAddAddress] = useState(false);
 	const [btnName, setBtnName] = useState('Add Adress');
 	const [address, setAddress] = useState('');
 	const [hideBtn, setHideBtn] = useState(false);
-
+	const history = useHistory();
 	const cart = useSelector((state) => state.cart);
 	const productId = props.match.params.id;
 	const qty = props.location.search
@@ -45,7 +45,7 @@ const Cart = (props) => {
 
 	const checkOut = () => {
 		dispatch(saveTotalPrice(total));
-		window.location.href = '/shipping';
+		history.push('/shipping');
 	};
 	return (
 		<div>

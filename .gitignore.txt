@@ -1,3 +1,35 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@Svhrkumar 
+basir
+/
+amazona
+5
+191184
+Code
+Issues
+13
+Pull requests
+2
+Actions
+Projects
+Wiki
+Security
+Insights
+amazona/.gitignore
+@basir
+basir Video-45-Publish-To-Heroku
+Latest commit 5ca0024 on Oct 26, 2020
+ History
+ 1 contributor
+25 lines (20 sloc)  260 Bytes
+  
 # dependencies
 node_modules
 /.pnp
@@ -22,4 +54,17 @@ yarn-error.log*
 package-lock.json
 
 .env
-/uploads/*.jpg
+
+© 2021 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Loading complete

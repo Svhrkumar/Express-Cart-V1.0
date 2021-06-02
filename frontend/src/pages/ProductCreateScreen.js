@@ -10,6 +10,7 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const ProductCreateScreen = () => {
+	const history = useHistory();
 	const [name, setName] = useState('');
 	const [price, setPrice] = useState('');
 	const [image, setImage] = useState('');
@@ -62,7 +63,7 @@ const ProductCreateScreen = () => {
 	};
 	useEffect(() => {
 		if (success) {
-			window.location.href = '/';
+			history.push('/');
 		}
 	}, [success]);
 
@@ -86,7 +87,7 @@ const ProductCreateScreen = () => {
 		}
 	};
 	const cancelHandler = () => {
-		window.location.href = '/productsmanager';
+		history.push('/productsmanager');
 	};
 	console.log('-------available size----', typeof availableSize);
 	return (

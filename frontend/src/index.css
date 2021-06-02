@@ -117,6 +117,7 @@ footer {
 .sub-nav-ctn {
 	list-style: none;
 	display: flex;
+	flex-wrap: wrap;
 	flex-direction: row;
 	justify-content: space-evenly;
 	padding: 2.5rem 6rem;
@@ -193,6 +194,13 @@ img.medium {
 	color: #203040;
 }
 /*product page*/
+.product-img-ctn {
+	width: 400px;
+	height: 400px;
+	border: 0.1rem #c0c0c0 solid;
+	background-color: #1faa59;
+}
+
 .large {
 	width: auto;
 	height: 600px;
@@ -358,7 +366,11 @@ ul {
 	border-radius: 9px;
 	padding: 40px;
 	margin: 50px 100px;
-	background-color: #eaedf0;
+	background-color: #ffffff;
+	box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+		0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+		0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+		0 100px 80px rgba(0, 0, 0, 0.12);
 }
 .order-item-history-ctn {
 	width: 600px;

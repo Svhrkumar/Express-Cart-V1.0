@@ -10,7 +10,7 @@ import { PRODUCT_UPDATE_RESET } from '../types/type';
 import axios from 'axios';
 const ProductEditScreen = (props) => {
 	const productId = props.match.params.id;
-
+	const history = useHistory();
 	const [name, setName] = useState('');
 	const [price, setPrice] = useState('');
 	const [image, setImage] = useState('');
@@ -39,7 +39,7 @@ const ProductEditScreen = (props) => {
 
 		if (successUpdate) {
 			dispatch({ type: PRODUCT_UPDATE_RESET });
-			window.location.href = '/productsmanager';
+			history.push('/productsmanager');
 		}
 		if (!product || product._id !== productId || successUpdate) {
 			dispatch({ type: PRODUCT_UPDATE_RESET });
@@ -94,7 +94,7 @@ const ProductEditScreen = (props) => {
 		}
 	};
 	const cancelHandler = () => {
-		window.location.href = '/productsmanager';
+		history.push('/productsmanager');
 	};
 	return (
 		<div>

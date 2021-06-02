@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import login from '../images/login.png';
+import login from '../images/login-illustartor.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { signinAction } from '../actions/userActions';
-
-import { useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import '../index.css';
 import '../style.css';
@@ -16,7 +16,7 @@ const Signin = (props) => {
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.user);
 	const { loading, error } = user;
-
+	const history = useHistory();
 	console.log(
 		'...........user response ----------',
 		user && user.user && user.user.name
@@ -32,9 +32,9 @@ const Signin = (props) => {
 	};
 	useEffect(() => {
 		if (user.user) {
-			window.location.href = `${redirect}`;
+			history.push(redirect);
 		}
-	}, [redirect, user]);
+	}, [history, redirect, user]);
 
 	return (
 		<div className='main-ctn'>

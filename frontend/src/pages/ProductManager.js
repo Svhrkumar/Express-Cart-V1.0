@@ -6,7 +6,6 @@ import {
 	createproductAction,
 	listProducts,
 	deleteProductAction,
-	listElectrinics,
 } from '../actions/productActions';
 import {
 	FASHION_PRODUCT_CREATE_RESET,
@@ -20,7 +19,7 @@ const ProductManager = () => {
 	const productDelete = useSelector((state) => state.productDelete);
 	const electronicProducts = useSelector((state) => state.electronicProducts);
 	const dispatch = useDispatch();
-
+	const history = useHistory();
 	const { loading, error, products } = productList;
 	const {
 		loading: electronicItemsLoading,
@@ -44,21 +43,18 @@ const ProductManager = () => {
 	useEffect(() => {
 		if (successCreate) {
 			dispatch({ type: FASHION_PRODUCT_CREATE_RESET });
-
-			window.location.href = `/product/${createdProduct._id}/edit`;
+			history.push(`/product/${createdProduct._id}/edit`);
 		}
 		dispatch(listProducts());
-		dispatch(listElectrinics());
 		if (successDelete) {
 			dispatch({ type: PRODUCT_DELETE_RESET });
 		}
-	}, [dispatch, createdProduct, successCreate, successDelete]);
+	}, [dispatch, createdProduct, successCreate, successDelete, history]);
 	console.log('-----------------productlist-----------', productList);
 
 	const createProduct = () => {
 		console.log('-----------------create product----------');
-
-		window.location.href = '/product/create';
+		history.push('/product/create');
 	};
 
 	const deleteHandler = (productId) => {
@@ -117,7 +113,7 @@ const ProductManager = () => {
 										type='button'
 										className='details-btn'
 										onClick={() =>
-											(window.location.href = `/product/${product._id}/edit`)
+											history.push(`/product/${product._id}/edit`)
 										}>
 										Edit
 									</button>
@@ -158,32 +154,31 @@ const ProductManager = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{electronicItems &&
-							electronicItems.map((product) => (
-								<tr key={product._id}>
-									<td>{product._id}</td>
-									<td>{product.name.slice(0, 26)}</td>
-									<td>{product.price}</td>
-									<td>{product.category}</td>
-									<td>{product.Brand}</td>
-									<td>
-										<button
-											type='button'
-											className='details-btn'
-											onClick={() =>
-												(window.location.href = `/product/${product._id}/edit`)
-											}>
-											Edit
-										</button>
-										<button
-											type='button'
-											className='details-btn'
-											onClick={() => deleteHandler(product._id)}>
-											Delete
-										</button>
-									</td>
-								</tr>
-							))}
+						{electronicItems.map((product) => (
+							<tr key={product._id}>
+								<td>{product._id}</td>
+								<td>{product.name.slice(0, 26)}</td>
+								<td>{product.price}</td>
+								<td>{product.category}</td>
+								<td>{product.Brand}</td>
+								<td>
+									<button
+										type='button'
+										className='details-btn'
+										onClick={() =>
+											history.push(`/product/${product._id}/edit`)
+										}>
+										Edit
+									</button>
+									<button
+										type='button'
+										className='details-btn'
+										onClick={() => deleteHandler(product._id)}>
+										Delete
+									</button>
+								</td>
+							</tr>
+						))}
 					</tbody>
 				</table>
 			}

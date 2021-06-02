@@ -7,6 +7,7 @@ import { userUpdate } from '../actions/userActions';
 import '../index.css';
 
 const Modal = (props) => {
+	const history = useHistory();
 	const [userId, setUserId] = useState();
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
@@ -27,7 +28,7 @@ const Modal = (props) => {
 	};
 
 	const cancelHandler = () => {
-		window.location.href = '/userslist';
+		history.push('/userslist');
 	};
 	console.log(props.userInfo);
 
