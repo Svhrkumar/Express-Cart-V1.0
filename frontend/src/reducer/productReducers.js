@@ -29,6 +29,13 @@ import {
 	ELECTRONICS_PRODUCT_CREATE_SUCCESS,
 	ELECTRONICS_PRODUCT_CREATE_RESET,
 	ELECTRONICS_PRODUCT_CREATE_FAIL,
+	PRODUCT_VIEWES_HISTORY,
+	ELECTRIC_LAPTOP_DETAILS_FAIL,
+	ELECTRIC_LAPTOP_DETAILS_REQUEST,
+	ELECTRIC_LAPTOP_DETAILS_SUCCESS,
+	ELECTRIC_MOBILE_DETAILS_FAIL,
+	ELECTRIC_MOBILE_DETAILS_REQUEST,
+	ELECTRIC_MOBILE_DETAILS_SUCCESS,
 } from '../types/type';
 
 export const productListReducer = (
@@ -212,6 +219,67 @@ export const electronicsProductCreateReducer = (state = {}, action) => {
 			};
 		case ELECTRONICS_PRODUCT_CREATE_RESET:
 			return {};
+		default:
+			return state;
+	}
+};
+
+export const historyViewed = (state = { viewedHistory: [] }, action) => {
+	switch (action.type) {
+		case PRODUCT_VIEWES_HISTORY:
+			return {
+				viewedHistory: [action.payload],
+			};
+
+		default:
+			return state;
+	}
+};
+
+export const electricMobileDetailsReducer = (
+	state = { loading: true },
+	action
+) => {
+	switch (action.type) {
+		case ELECTRIC_MOBILE_DETAILS_REQUEST:
+			return {
+				loading: true,
+			};
+		case ELECTRIC_MOBILE_DETAILS_SUCCESS:
+			return {
+				loading: false,
+				mobiles: action.payload,
+			};
+		case ELECTRIC_MOBILE_DETAILS_FAIL:
+			return {
+				loading: false,
+				error: action.payload,
+			};
+
+		default:
+			return state;
+	}
+};
+export const electricLaptopDetailsReducer = (
+	state = { loading: true },
+	action
+) => {
+	switch (action.type) {
+		case ELECTRIC_LAPTOP_DETAILS_REQUEST:
+			return {
+				loading: true,
+			};
+		case ELECTRIC_LAPTOP_DETAILS_SUCCESS:
+			return {
+				loading: false,
+				laptops: action.payload,
+			};
+		case ELECTRIC_LAPTOP_DETAILS_FAIL:
+			return {
+				loading: false,
+				error: action.payload,
+			};
+
 		default:
 			return state;
 	}

@@ -13,6 +13,7 @@ const Product = (props) => {
 	const [qty, setQty] = useState(1);
 	const productId = props.match.params.id;
 	const category = props.match;
+	const [selectImage, setSelectImage] = useState(null);
 	const productDetails = useSelector((state) => state.productDetails);
 	const { loading, error, product } = productDetails;
 	console.log('.------product-& -id-----', productId);
@@ -27,129 +28,142 @@ const Product = (props) => {
 	};
 	return (
 		<div>
-			<Fade bottom cascade>
-				{loading ? (
-					<div
-						style={{
-							display: 'grid',
-							placeItems: 'center',
-							margin: '300px 500px',
-						}}>
-						<LoadingBox />
-					</div>
-				) : error ? (
-					<div style={{ margin: '300px 500px' }}>
-						<MessageBox varient='danger'>{error}</MessageBox>
-					</div>
-				) : (
-					<div className='row top '>
-						<div className='col-2'>
-							<img className='large' src={product.image[0]} />
+			{loading ? (
+				<div
+					style={{
+						display: 'grid',
+						placeItems: 'center',
+						margin: '300px 500px',
+					}}>
+					<LoadingBox />
+				</div>
+			) : error ? (
+				<div style={{ margin: '300px 500px' }}>
+					<MessageBox varient='danger'>{error}</MessageBox>
+				</div>
+			) : (
+				<div className='row top '>
+					<div className='product-img-ctn'>
+						<div className='product-img-display'>
+							{selectImage === null ? (
+								<img className='large' src={product.image[0]} />
+							) : (
+								<img className='large' src={selectImage} />
+							)}
 						</div>
-						<div className='details-container'>
-							<div className='col-1'>
+						<div>
+							<div className='product-img-list-ctn'>
+								{product.image.map((pic, key) => {
+									console.log('------images---', pic);
+									return (
+										<div
+											key={key}
+											className='product-img-list'
+											onClick={() => setSelectImage(pic)}>
+											<img className='product-img-list-item' src={pic} />
+										</div>
+									);
+								})}
+							</div>
+						</div>
+					</div>
+					<div className='details-container'>
+						<div className='col-1'>
+							<div className=' product-card'>
 								<ul>
 									<li>
 										<h1>{product.name}</h1>
 									</li>
 									<br></br>
-
 									<li>
-										Description:
-										{product.description}
+										<div className='price-card'>
+											<div>
+												<h3>Rs. {product.price}</h3>
+											</div>
+											<div>
+												<h4 className='price-card-taxes'>
+													inclusive of all taxes
+												</h4>
+											</div>
+										</div>
 									</li>
-									<br></br>
+									<li></li>
 									<li>
-										<Rating
-											rating={product.rating}
-											numReviews={product.numReviews}
-										/>
+										<div className='price-card-status'>
+											<div>
+												<h4>
+													{product.countInStock > 0 ? (
+														<span className='success'>In Stock</span>
+													) : (
+														<span className='error'>Out of Stock</span>
+													)}
+												</h4>
+											</div>
+										</div>
 									</li>
-								</ul>
-							</div>
-							<hr style={{ width: '80%' }} />
-							<div className='col-1'>
-								<div className=' product-card'>
-									<ul>
-										<li>
-											<div className='price-card'>
-												<div>
-													<h2>Rs. {product.price}</h2>
-												</div>
-												<div>
-													<h4 className='price-card-taxes'>
-														inclusive of all taxes
-													</h4>
-												</div>
-											</div>
-										</li>
-										<li></li>
-										<li>
-											<div className='price-card-status'>
-												<div>
-													<h4>
-														{product.countInStock > 0 ? (
-															<span className='success'>In Stock</span>
-														) : (
-															<span className='error'>Out of Stock</span>
-														)}
-													</h4>
-												</div>
-											</div>
-										</li>
-										<li>
-											<h4>Sizes: </h4>
-											{product.availableSizes.map((x) => (
-												<span>
-													<button className='sizes-btn'>
-														<b>{x}</b>
-													</button>
-												</span>
-											))}
-										</li>
-										<li>
-											{product.countInStock > 0 && (
-												<div className='qtn'>
-													<p>Qty:</p>
+									<li>
+										<h4>Sizes: </h4>
+										{product.availableSizes.map((x) => (
+											<span>
+												<button className='sizes-btn'>
+													<b>{x}</b>
+												</button>
+											</span>
+										))}
+									</li>
+									<li>
+										{product.countInStock > 0 && (
+											<div className='qtn'>
+												<p>Qty:</p>
 
-													<select
-														className='product-qtn'
-														value={qty}
-														onChange={(e) => setQty(e.target.value)}>
-														{[...Array(product.countInStock).keys()].map(
-															(x) => (
-																<option key={x + 1} value={x + 1}>
-																	{x + 1}
-																</option>
-															)
-														)}
-													</select>
-												</div>
-											)}
-										</li>
-										<div className='btn-ctn'>
-											{product.countInStock > 0 ? (
-												<li>
-													<button onClick={addToCart} className='primary-btn'>
-														Add to Cart
-													</button>
-												</li>
-											) : null}
-
+												<select
+													className='product-qtn'
+													value={qty}
+													onChange={(e) => setQty(e.target.value)}>
+													{[...Array(product.countInStock).keys()].map((x) => (
+														<option key={x + 1} value={x + 1}>
+															{x + 1}
+														</option>
+													))}
+												</select>
+											</div>
+										)}
+									</li>
+									<div className='btn-ctn'>
+										{product.countInStock > 0 ? (
 											<li>
-												<button className='primary-btn-wishlist'>
-													Wishlist
+												<button onClick={addToCart} className='primary-btn'>
+													Add to Cart
 												</button>
 											</li>
-										</div>
-									</ul>
-								</div>
-								<ul></ul>
+										) : null}
+
+										<li>
+											<button className='primary-btn-wishlist'>Wishlist</button>
+										</li>
+									</div>
+								</ul>
 							</div>
 						</div>
+						<hr style={{ width: '80%' }} />
+						<div className='col-1'>
+							<ul>
+								<li>
+									Description:
+									{product.description}
+								</li>
+								<br></br>
+								<li>
+									<Rating
+										rating={product.rating}
+										numReviews={product.numReviews}
+									/>
+								</li>
+							</ul>
+						</div>
 					</div>
-				)}
-			</Fade>
+				</div>
+			)}
 		</div>
 	);
 };
