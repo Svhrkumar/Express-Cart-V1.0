@@ -2,9 +2,12 @@ import { data } from './data';
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import {
+	electricLaptopDetailsReducer,
+	electricMobileDetailsReducer,
 	electricProductDetailsReducer,
 	electronicItemListReducer,
 	electronicsProductCreateReducer,
+	historyViewed,
 	productCreateReducer,
 	proDuctDeleteReducer,
 	productDetailsReducer,
@@ -34,6 +37,8 @@ import {
 	bannersListReducer,
 	carouselAddsReducer,
 	electronicBannersListReducer,
+	fashionBannersListReducer,
+	homeBannersListReducer,
 } from './reducer/advertismentsReducer';
 
 export const initialState = {
@@ -81,11 +86,15 @@ const reducer = combineReducers({
 	userDelete: userDeleteReducer,
 	userUpdate: userListUpdateReducer,
 	carouselOffers: carouselAddsReducer,
-	bannersOffers: bannersListReducer,
+	bannersOffers: fashionBannersListReducer,
 	electronicProducts: electronicItemListReducer,
+	homeBannersList: homeBannersListReducer,
 	eletronicProductDetails: electricProductDetailsReducer,
 	electronicOffers: electronicBannersListReducer,
 	electronicProductsCreate: electronicsProductCreateReducer,
+	recentlyViewed: historyViewed,
+	laptopDetails: electricLaptopDetailsReducer,
+	mobileDetails: electricMobileDetailsReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

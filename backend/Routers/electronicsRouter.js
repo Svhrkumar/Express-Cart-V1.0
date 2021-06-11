@@ -26,21 +26,21 @@ electronicRouter.get(
 		}
 	})
 );
-electronicRouter.get(
-	'/:id',
-	expressAsyncHandler(async (req, res) => {
-		const product = await Electronics.findById(req.params.id);
-		if (product) {
-			res.send({ product });
-		} else {
-			res.status(404).send({ message: 'Product Not Found' });
-		}
-	})
-);
+// electronicRouter.get(
+// 	'/:id',
+// 	expressAsyncHandler(async (req, res) => {
+// 		const product = await Electronics.findById(req.params.id);
+// 		if (product) {
+// 			res.send({ product });
+// 		} else {
+// 			res.status(404).send({ message: 'Product Not Found' });
+// 		}
+// 	})
+// );
 electronicRouter.get(
 	'/mobiles',
 	expressAsyncHandler(async (req, res) => {
-		const mobileItems = await Electronics.find({ category: 'Mobile' });
+		const mobileItems = await Electronics.find({ subcategory: 'Mobile' });
 		if (mobileItems) {
 			res.send({ mobileItems });
 		} else {
@@ -51,7 +51,7 @@ electronicRouter.get(
 electronicRouter.get(
 	'/laptops',
 	expressAsyncHandler(async (req, res) => {
-		const laptopsItems = await Electronics.find({ category: 'Laptops' });
+		const laptopsItems = await Electronics.find({ subcategory: 'Laptops' });
 		if (laptopsItems) {
 			res.send({ laptopsItems });
 		} else {

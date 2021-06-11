@@ -8,6 +8,9 @@ import {
 	CAROUSEL_ELECTRIC_ADDS_SUCCESS,
 	CAROUSEL_ELECTRIC_ADDS_REQUEST,
 	CAROUSEL_ELECTRIC_ADDS_FAIL,
+	HOME_ADDS_SUCCESS,
+	HOME_ADDS_REQUEST,
+	HOME_ADDS_FAIL,
 } from '../types/type';
 import axios from 'axios';
 
@@ -48,6 +51,9 @@ export const listCarouselOffers = () => async (dispatch) => {
 	dispatch({
 		type: CAROUSEL_ELECTRIC_ADDS_REQUEST,
 	});
+	dispatch({
+		type: HOME_ADDS_REQUEST,
+	});
 
 	try {
 		const { data } = await axios.get(`/api/offers/banners`);
@@ -60,6 +66,11 @@ export const listCarouselOffers = () => async (dispatch) => {
 			type: CAROUSEL_ELECTRIC_ADDS_SUCCESS,
 			payload: data,
 		});
+
+		dispatch({
+			type: HOME_ADDS_SUCCESS,
+			payload: data,
+		});
 	} catch (error) {
 		dispatch({
 			type: CAROUSEL_FASHION_ADDS_FAIL,
@@ -70,6 +81,13 @@ export const listCarouselOffers = () => async (dispatch) => {
 		});
 		dispatch({
 			type: CAROUSEL_ELECTRIC_ADDS_FAIL,
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message,
+		});
+		dispatch({
+			type: HOME_ADDS_FAIL,
 			payload:
 				error.response && error.response.data.message
 					? error.response.data.message

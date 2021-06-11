@@ -25,6 +25,12 @@ import {
 	ELECTRONICS_PRODUCT_CREATE_REQUEST,
 	ELECTRONICS_PRODUCT_CREATE_SUCCESS,
 	ELECTRONICS_PRODUCT_CREATE_FAIL,
+	PRODUCT_VIEWES_HISTORY,
+	ELECTRIC_MOBILE_DETAILS_REQUEST,
+	ELECTRIC_MOBILE_DETAILS_SUCCESS,
+	ELECTRIC_MOBILE_DETAILS_FAIL,
+	ELECTRIC_LAPTOP_DETAILS_REQUEST,
+	ELECTRIC_LAPTOP_DETAILS_SUCCESS,
 } from '../types/type';
 
 export const listProducts = () => async (dispatch) => {
@@ -54,6 +60,11 @@ export const detailsProduct = (productId, category) => async (dispatch) => {
 		console.log('-------product----action------', data);
 		dispatch({
 			type: PRODUCT_DETAILS_SUCCESS,
+			payload: data.product,
+		});
+
+		dispatch({
+			type: PRODUCT_VIEWES_HISTORY,
 			payload: data.product,
 		});
 	} catch (error) {
@@ -146,6 +157,7 @@ export const deleteProductAction = (itemId) => async (dispatch, getState) => {
 		});
 	}
 };
+//common
 
 //Electronic Products action //
 
@@ -175,6 +187,10 @@ export const electricProductDetails = (productId) => async (dispatch) => {
 		console.log('-------product----action------', data);
 		dispatch({
 			type: ELECTRIC_PRODUCT_DETAILS_SUCCESS,
+			payload: data.product,
+		});
+		dispatch({
+			type: PRODUCT_VIEWES_HISTORY,
 			payload: data.product,
 		});
 	} catch (error) {
@@ -207,6 +223,7 @@ export const createElectronicsProduct =
 				type: ELECTRONICS_PRODUCT_CREATE_SUCCESS,
 				payload: data,
 			});
+			dispatch();
 		} catch (error) {
 			dispatch({
 				type: ELECTRONICS_PRODUCT_CREATE_FAIL,
@@ -217,3 +234,51 @@ export const createElectronicsProduct =
 			});
 		}
 	};
+
+export const electricMobileProductDetails = () => async (dispatch) => {
+	dispatch({
+		type: ELECTRIC_MOBILE_DETAILS_REQUEST,
+	});
+
+	try {
+		const { data } = await axios.get(`/api/product/electronics/mobiles`);
+
+		console.log('-------product----action------', data);
+		dispatch({
+			type: ELECTRIC_MOBILE_DETAILS_SUCCESS,
+			payload: data.mobileItems,
+		});
+	} catch (error) {
+		dispatch({
+			type: ELECTRIC_MOBILE_DETAILS_FAIL,
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message,
+		});
+	}
+};
+
+export const electricLaptopProductDetails = () => async (dispatch) => {
+	dispatch({
+		type: ELECTRIC_LAPTOP_DETAILS_REQUEST,
+	});
+
+	try {
+		const { data } = await axios.get(`/api/product/electronics/laptops`);
+
+		console.log('-------product----action------', data);
+		dispatch({
+			type: ELECTRIC_LAPTOP_DETAILS_SUCCESS,
+			payload: data.laptopsItems,
+		});
+	} catch (error) {
+		dispatch({
+			type: ELECTRIC_MOBILE_DETAILS_FAIL,
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message,
+		});
+	}
+};

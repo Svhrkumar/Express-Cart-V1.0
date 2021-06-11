@@ -9,6 +9,9 @@ import {
 	CAROUSEL_ELECTRIC_ADDS_SUCCESS,
 	CAROUSEL_ELECTRIC_ADDS_FAIL,
 	ADD_CREATE_RESET,
+	HOME_ADDS_FAIL,
+	HOME_ADDS_REQUEST,
+	HOME_ADDS_SUCCESS,
 } from '../types/type';
 
 export const carouselAddsReducer = (state = {}, action) => {
@@ -62,7 +65,7 @@ export const electronicBannersListReducer = (state = {}, action) => {
 	}
 };
 
-export const bannersListReducer = (state = {}, action) => {
+export const fashionBannersListReducer = (state = {}, action) => {
 	switch (action.type) {
 		case CAROUSEL_FASHION_ADDS_REQUEST:
 			return {
@@ -78,6 +81,30 @@ export const bannersListReducer = (state = {}, action) => {
 				),
 			};
 		case CAROUSEL_FASHION_ADDS_FAIL:
+			return {
+				loading: false,
+				error: action.payload,
+			};
+
+		default:
+			return state;
+	}
+};
+
+export const homeBannersListReducer = (state = {}, action) => {
+	switch (action.type) {
+		case HOME_ADDS_REQUEST:
+			return {
+				loading: true,
+			};
+
+		case HOME_ADDS_SUCCESS:
+			return {
+				loading: false,
+				success: true,
+				bannersImages: action.payload,
+			};
+		case HOME_ADDS_FAIL:
 			return {
 				loading: false,
 				error: action.payload,

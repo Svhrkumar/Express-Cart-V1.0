@@ -14,7 +14,7 @@ const SubNavbar = () => {
 				<li className='sub-nav-list'>Home Appliance</li>
 				<li className='sub-nav-list'>Furniture</li>
 				<li>
-					<Link className='sub-nav-list' to='/'>
+					<Link className='sub-nav-list' to='/fashion'>
 						Fashion
 					</Link>
 				</li>

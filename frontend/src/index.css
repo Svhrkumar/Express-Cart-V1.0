@@ -18,6 +18,7 @@ body {
 	display: grid;
 	grid-template-areas:
 		'header'
+		'bredcrumb'
 		'main'
 		'footer';
 	grid-template-columns: 1fr;
@@ -29,6 +30,7 @@ header {
 	background: transparent linear-gradient(90deg, #f4be2c 0%, #e07c24 100%) 0% 0%;
 	height: 8rem;
 	z-index: 1;
+	max-width: 100%;
 }
 
 .nav {
@@ -159,6 +161,91 @@ a.brand {
 	margin-top: 7rem;
 	align-items: flex-start;
 }
+/*Home page */
+.home-container {
+}
+.main-banners-ctn {
+	max-height: auto;
+	max-width: 100%;
+	box-shadow: 10px 10px 10px -10px #242b2e;
+}
+/*banner component*/
+.banners {
+	height: 35rem;
+	max-width: 100%;
+	margin: 20px 5px;
+
+	justify-content: center;
+	object-fit: contain;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.banner-left-button {
+	background-color: #c0c0c0;
+	height: auto;
+	width: auto;
+	padding: 10px 5px;
+
+	cursor: pointer;
+	margin: 14rem 0.5rem;
+	opacity: 0.6;
+}
+.banner-right-button {
+	background-color: #c0c0c0;
+	height: auto;
+	width: auto;
+	padding: 10px 5px;
+
+	cursor: pointer;
+	margin: 14rem 0.5rem;
+	opacity: 0.6;
+}
+.banner-img {
+	width: auto;
+	height: 330px;
+}
+/*Scroll card component*/
+.scroll-cards-ctn {
+	max-width: 1400px;
+	height: auto;
+	display: flex;
+	flex-direction: row;
+	overflow-y: scroll;
+	box-shadow: 0px 5px 10px -10px;
+}
+
+.scroll-cards-ctn::-webkit-scrollbar {
+	display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scroll-cards-ctn {
+	-ms-overflow-style: none; /* IE and Edge */
+}
+
+.scroll-card {
+	margin: 2rem 1rem;
+	height: 30rem;
+	max-width: 35rem;
+
+	align-items: center;
+}
+.scroll-card-image-ctn {
+	height: 20rem;
+	width: 20rem;
+	display: grid;
+	place-items: center;
+	border-bottom: 1px #242b2e;
+}
+.scroll-card-image {
+	height: 12rem;
+	width: auto;
+}
+.scroll-card-content {
+	text-align: center;
+}
 /* Image */
 img {
 	border-radius: 0.5rem;
@@ -195,16 +282,72 @@ img.medium {
 }
 /*product page*/
 .product-img-ctn {
-	width: 400px;
-	height: 400px;
+	width: 700px;
+	height: 700px;
 	border: 0.1rem #c0c0c0 solid;
-	background-color: #1faa59;
+	border-radius: 9px;
+	margin: 20px auto;
+	display: grid;
+	place-items: 'center';
+}
+.product-img-display {
+	width: 500px;
+	height: 430px;
+}
+
+.product-img-display img {
+	width: auto;
+	height: 300px;
+	margin: 10px 50px;
+}
+.product-img-list-ctn {
+	display: flex;
+	margin: 50px 50px 50px 20px;
+	justify-content: center;
+}
+.product-img-list {
+	width: 100px;
+	height: 100px;
+
+	margin: 5px 10px;
+}
+
+.product-img-list-item :hover {
+	border: 0.1rem #3a09ff solid;
+}
+.product-img-list-item {
+	width: auto;
+	height: 80px;
+	object-fit: cover;
+}
+.flex-scroll-ctn {
+	display: flex;
+	overflow-y: hidden;
+	overflow-x: scroll;
+	max-height: auto;
+	width: 1400px;
+	margin: 10px 30px;
+	border-top: 0.1rem #c0c0c0 solid;
+	border-bottom: 0.1rem #c0c0c0 solid;
+	justify-content: space-between;
+	padding: 20px 5px;
+}
+
+.item-ctn {
+	width: 150px;
+	height: 150px;
+	border: 0.1rem #c0c0c0 solid;
+}
+.img-ctn {
+	display: grid;
+	place-items: 'center';
 }
 
 .large {
 	width: auto;
-	height: 600px;
-	margin: 2rem 8rem;
+	height: 300px;
+	margin: 10px 40px;
+	padding: 26px 150px;
 }
 .col-1 {
 	margin: 2rem 20rem 2rem 2rem;
@@ -215,7 +358,9 @@ ul {
 .details-container {
 	display: flex;
 	flex-direction: column;
+	flex-wrap: wrap;
 	justify-content: space-around;
+	height: 800px;
 }
 .product-container {
 	border: 0.1rem #c0c0c0 solid;
@@ -226,6 +371,7 @@ ul {
 .price-card {
 	display: flex;
 	justify-content: space-between;
+	margin: 50px 5px;
 }
 .price-card-status {
 	margin: 1rem 0rem;
@@ -277,6 +423,7 @@ ul {
 	color: #ffffff;
 }
 .btn-ctn {
+	margin-top: 20px;
 	display: flex;
 }
 /*message box*/
@@ -668,14 +815,16 @@ ul {
 .product-inner-ctn {
 	margin: 0.5rem 3rem 3rem 3rem;
 	background-color: #f2f3f5;
-	width: 80%;
+	max-width: 80%;
 	height: auto;
 	border-radius: 10px;
 	padding: 1rem 5rem;
 }
 .ctn-row {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-around;
+	align-items: center;
 }
 .input-field {
 	height: 10px;
@@ -838,7 +987,7 @@ ul {
 }
 .side-navbar {
 	height: auto;
-	width: 60rem;
+	max-width: 60rem;
 	padding: 4rem 1rem;
 	background-color: #f4f4f7;
 	border: 0.1rem #c0c0c0 solid;
