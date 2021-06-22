@@ -87,47 +87,53 @@ const ProductManager = () => {
 			) : error ? (
 				<MessageBox variant='danger'>{error}</MessageBox>
 			) : (
-				<table
-					className='table'
-					style={{ width: '80%', margin: '20px 170px 20px 170px' }}>
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Product Name</th>
-							<th>price</th>
-							<th>Category</th>
-							<th>Brand</th>
-							<th>Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						{products.map((product) => (
-							<tr key={product._id}>
-								<td>{product._id}</td>
-								<td>{product.name}</td>
-								<td>{product.price}</td>
-								<td>{product.category}</td>
-								<td>{product.Brand}</td>
-								<td>
-									<button
-										type='button'
-										className='details-btn'
-										onClick={() =>
-											history.push(`/product/${product._id}/edit`)
-										}>
-										Edit
-									</button>
-									<button
-										type='button'
-										className='details-btn'
-										onClick={() => deleteHandler(product._id)}>
-										Delete
-									</button>
-								</td>
+				<div>
+					<table
+						className='table'
+						style={{
+							width: '80%',
+							margin: '20px 170px 20px 170px',
+							overflowX: 'auto',
+						}}>
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Product Name</th>
+								<th>price</th>
+								<th>Category</th>
+								<th>Brand</th>
+								<th>Action</th>
 							</tr>
-						))}
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							{products.map((product) => (
+								<tr key={product._id}>
+									<td>{product._id}</td>
+									<td>{product.name}</td>
+									<td>{product.price}</td>
+									<td>{product.category}</td>
+									<td>{product.Brand}</td>
+									<td>
+										<button
+											type='button'
+											className='details-btn'
+											onClick={() =>
+												history.push(`/product/${product._id}/edit`)
+											}>
+											Edit
+										</button>
+										<button
+											type='button'
+											className='details-btn'
+											onClick={() => deleteHandler(product._id)}>
+											Delete
+										</button>
+									</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
 			)}
 			<hr />
 			<div
@@ -140,47 +146,49 @@ const ProductManager = () => {
 				<h2 style={{ marginRight: '200px' }}>Electronic Products List</h2>
 			</div>
 			{
-				<table
-					className='table'
-					style={{ width: '80%', margin: '20px 170px 20px 170px' }}>
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Product Name</th>
-							<th>price</th>
-							<th>Category</th>
-							<th>Brand</th>
-							<th>Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						{electronicItems.map((product) => (
-							<tr key={product._id}>
-								<td>{product._id}</td>
-								<td>{product.name.slice(0, 26)}</td>
-								<td>{product.price}</td>
-								<td>{product.category}</td>
-								<td>{product.Brand}</td>
-								<td>
-									<button
-										type='button'
-										className='details-btn'
-										onClick={() =>
-											history.push(`/product/${product._id}/edit`)
-										}>
-										Edit
-									</button>
-									<button
-										type='button'
-										className='details-btn'
-										onClick={() => deleteHandler(product._id)}>
-										Delete
-									</button>
-								</td>
+				<div style={{ overflowX: 'auto' }}>
+					<table
+						className='table'
+						style={{ width: '80%', margin: '20px 170px 20px 170px' }}>
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Product Name</th>
+								<th>price</th>
+								<th>Category</th>
+								<th>Brand</th>
+								<th>Action</th>
 							</tr>
-						))}
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							{electronicItems.map((product) => (
+								<tr key={product._id}>
+									<td>{product._id}</td>
+									<td>{product.name.slice(0, 26)}</td>
+									<td>{product.price}</td>
+									<td>{product.category}</td>
+									<td>{product.Brand}</td>
+									<td>
+										<button
+											type='button'
+											className='details-btn'
+											onClick={() =>
+												history.push(`/product/${product._id}/edit`)
+											}>
+											Edit
+										</button>
+										<button
+											type='button'
+											className='details-btn'
+											onClick={() => deleteHandler(product._id)}>
+											Delete
+										</button>
+									</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
 			}
 		</div>
 	);

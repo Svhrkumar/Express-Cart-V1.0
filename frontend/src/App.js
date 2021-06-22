@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import Products from './components/Products';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { data } from './data';
-import Home from './pages/Home';
+import FashionScreen from './pages/FashionScreen';
 import Product from './pages/Product';
 import Cart from './pages/Cart';
 import Signin from './pages/Signin';
@@ -30,6 +30,8 @@ import OffersUploadScreen from './pages/OffersUploadScreen';
 import ElectronicScreen from './pages/ElectronicScreen';
 import ProductDetailsScreen from './pages/ProductDetailsScreen';
 import SubNavbar from './components/SubNavbar';
+import Home from './pages/Home';
+import Breadcrumb from './components/Breadcrumb';
 
 function App() {
 	const user = useSelector((state) => state.user);
@@ -42,9 +44,11 @@ function App() {
 		<Router>
 			<div class='grid-container'>
 				<Navbar />
+
 				<Switch>
 					<PrivateRoute exact path='/profile' component={Profile} />
 					<Route exact path='/' component={Home} />
+					<Route exact path='/fashion' component={FashionScreen} />
 					<Route excat path='/electronics' component={ElectronicScreen} />
 					<Route exact path='/signin' component={Signin} />
 					<Route exact path='/products/:id' component={Product} />
@@ -87,8 +91,6 @@ function App() {
 						component={OrderListUsers}
 					/>
 				</Switch>
-
-				<footer class='row center'>All right reserved</footer>
 			</div>
 		</Router>
 	);

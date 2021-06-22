@@ -9,9 +9,18 @@ const ElectronicCards = ({ item }) => {
 			<div key={item._id} className='card'>
 				<div className='card-image-ctn'>
 					<Link to={`/products/electronics/${item._id}`}>
-						<div>
+						<div
+							style={{
+								objectFit: 'cover',
+								display: 'grid',
+								placeItems: 'center',
+							}}>
 							<img
-								style={{ width: 'auto', height: '10rem' }}
+								style={{
+									width: 'auto',
+									height: '8rem',
+									margin: '0px 5px',
+								}}
 								src={item.image[0]}
 								alt='product'
 							/>
