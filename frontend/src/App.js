@@ -31,7 +31,12 @@ import ElectronicScreen from './pages/ElectronicScreen';
 import ProductDetailsScreen from './pages/ProductDetailsScreen';
 import SubNavbar from './components/SubNavbar';
 import Home from './pages/Home';
+import { Link as RouterLink } from 'react-router-dom';
 import Breadcrumb from './components/Breadcrumb';
+// Material Ui
+
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import Typography from '@material-ui/core/Typography';
 
 function App() {
 	const user = useSelector((state) => state.user);
@@ -42,7 +47,7 @@ function App() {
 	);
 	return (
 		<Router>
-			<div class='grid-container'>
+			<div class=''>
 				<Navbar />
 
 				<Switch>

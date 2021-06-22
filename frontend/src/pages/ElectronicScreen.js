@@ -15,6 +15,7 @@ import SubNavbar from '../components/SubNavbar';
 import ElectronicCards from '../components/ElectronicCards';
 import SideNavbar from '../components/SideNavbar';
 import Filter from '../components/Filter';
+import SimpleBreadcrumbs from '../components/Breadcrumb';
 const ElectronicScreen = () => {
 	const dispatch = useDispatch();
 
@@ -150,7 +151,7 @@ const ElectronicScreen = () => {
 	};
 	return (
 		<div>
-			<div style={{ marginTop: '25px' }}>
+			<div>
 				<SubNavbar />
 			</div>
 
@@ -158,7 +159,9 @@ const ElectronicScreen = () => {
 				<div style={{ marginTop: '5px' }}>
 					<CarouselContainer images={carouselImages} />
 				</div>
+
 				<Filter handleCategory={handleCategory} handleSort={handleSort} />
+				<SimpleBreadcrumbs />
 				<div className='flex-container'>
 					<SideNavbar />
 
