@@ -10,7 +10,7 @@ const electronicRouter = express.Router();
 // 	'/seed',
 // 	expressAsyncHandler(async (req, res) => {
 // 		// await Product.remove({});
-// 		const createdElectronics = await Electronics.insertMany(data.Electronics);
+// 		const createdElectronics = await Electronics.insertMany(data.products);
 
 // 		res.send({ createdElectronics });
 // 	})
@@ -18,7 +18,7 @@ const electronicRouter = express.Router();
 electronicRouter.get(
 	'/',
 	expressAsyncHandler(async (req, res) => {
-		const electronicItems = await Electronics.find({});
+		const electronicItems = await Electronics.find({ category: 'Electronics' });
 		if (electronicItems) {
 			res.send({ electronicItems });
 		} else {
