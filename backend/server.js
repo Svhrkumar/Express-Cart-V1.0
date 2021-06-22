@@ -34,16 +34,19 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/expresscart', {
 // 	res.send(data.products);
 // });
 
-app.get('/', (req, res) => {
-	res.send('Server is ready');
-});
+// app.get('/', (req, res) => {
+// 	res.send('Server is ready');
+// });
 
 //Routers
 app.use('/api/offerUploads', offerUploadRouter);
 app.use('/api/uploads', uploadRouter);
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
-
+app.use(express.static(path.join(__dirname, '/frontend/build')));
+app.get('*', (req, res) =>
+	res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
+);
 app.use('/api/orders', orderRouter);
 app.use('/api/offers', offerRouter);
 app.use('/api/product/electronics', electronicRouter);
