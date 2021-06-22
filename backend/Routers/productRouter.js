@@ -1,15 +1,15 @@
 import express from 'express';
 import { data } from '../data.js';
 import expressAsyncHandler from 'express-async-handler';
-import Product from '../models/productsModel.js';
+import Product from '../models/electronicsModel.js';
 import { isAdmin, isAuth } from '../utils.js';
-import Electronics from '../models/electronicsModel.js';
+
 const productRouter = express.Router();
 
 productRouter.get(
 	'/',
 	expressAsyncHandler(async (req, res) => {
-		const products = await Product.find({});
+		const products = await Product.find({ category: 'Fashion' });
 		res.send({ products });
 	})
 );

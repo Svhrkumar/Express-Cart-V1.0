@@ -11,7 +11,7 @@ const ElectronicsSchema = new mongoose.Schema(
 		rating: { type: Number, required: true },
 		numReviews: { type: Number, required: true },
 		description: { type: String, required: true },
-
+		availableSizes: { type: [Number], required: false },
 		countInStock: { type: Number, required: true },
 		discount: { type: Number, required: true },
 	},

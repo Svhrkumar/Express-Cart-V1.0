@@ -16,6 +16,7 @@ import { addItemToCart, addToCartItems } from '../actions/cartAction';
 import SubNavbar from '../components/SubNavbar';
 import ElectronicCards from '../components/ElectronicCards';
 import { PRODUCT_VIEWES_HISTORY } from '../types/type';
+import SimpleBreadcrumbs from '../components/Breadcrumb';
 const ProductDetailsScreen = (props) => {
 	const dispatch = useDispatch();
 	const [qty, setQty] = useState(1);
@@ -54,9 +55,10 @@ const ProductDetailsScreen = (props) => {
 	viewedHistory.push;
 	return (
 		<div>
-			<div style={{ marginTop: '30px' }}>
+			<div>
 				<SubNavbar />
 			</div>
+			<SimpleBreadcrumbs />
 			{loading ? (
 				<div
 					style={{
@@ -67,8 +69,8 @@ const ProductDetailsScreen = (props) => {
 					<LoadingBox />
 				</div>
 			) : error ? (
-				<div style={{ margin: '300px 500px' }}>r
-					<MessageBox varient='danger'>{error}</MessageBox>
+				<div style={{ margin: '300px 500px' }}>
+					r<MessageBox varient='danger'>{error}</MessageBox>
 				</div>
 			) : (
 				<React.Fragment>

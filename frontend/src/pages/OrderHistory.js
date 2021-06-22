@@ -28,86 +28,90 @@ const OrderHistory = () => {
 				<MessageBox variant='danger'>{error}</MessageBox>
 			) : (
 				<React.Fragment>
-					{orders &&
-						orders.map((items) => (
-							<React.Fragment>
-								<div className='order-history-ctn'>
-									<div className='order-item-history-ctn ' key={items._id}>
-										<h4 style={{ margin: '20px' }}>Order ID:{items._id}</h4>
-										<div>
-											{items &&
-												items.orderItems &&
-												items.orderItems.map((item) => (
-													<div
-														className='cart-info'
-														style={{ borderRadius: '9px' }}
-														key={item._id}>
+					{orders.reverse() &&
+						orders
+							.reverse()
+							.map((items) => (
+								<React.Fragment>
+									<div className='order-history-ctn'>
+										<div className='order-item-history-ctn ' key={items._id}>
+											<h4 style={{ margin: '20px' }}>Order ID:{items._id}</h4>
+											<div>
+												{items &&
+													items.orderItems &&
+													items.orderItems.map((item) => (
 														<div
-															className='cart-item-image'
-															style={{ width: '100px' }}>
-															<img
-																src={item.image[0]}
-																height='100px'
-																width='auto'
-															/>
-														</div>
-														<div style={{ margin: '0px 20px', width: '100%' }}>
-															<div className='cart-item-name'>
-																<p style={{ marginRight: '20px' }}>
-																	{item.name}
-																</p>
+															className='cart-info'
+															style={{ borderRadius: '9px' }}
+															key={item._id}>
+															<div
+																className='cart-item-image'
+																style={{ width: '100px' }}>
+																<img
+																	src={item.image[0]}
+																	height='100px'
+																	width='auto'
+																/>
+															</div>
+															<div
+																style={{ margin: '0px 20px', width: '100%' }}>
+																<div className='cart-item-name'>
+																	<p style={{ marginRight: '20px' }}>
+																		{item.name}
+																	</p>
 
-																<br />
-																<small style={{ marginRight: '10px' }}>
-																	{item.description}
-																</small>
-																<p>Qty:{item.qty}</p>
+																	<br />
+																	<small style={{ marginRight: '10px' }}>
+																		{item.description}
+																	</small>
+																	<p>Qty:{item.qty}</p>
+																</div>
+															</div>
+															<div style={{ margin: '40px 5px' }}>
+																<p>₹: {item.price}</p>
 															</div>
 														</div>
-														<div style={{ margin: '40px 5px' }}>
-															<p>₹: {item.price}</p>
-														</div>
-													</div>
-												))}
+													))}
+											</div>
 										</div>
-									</div>
-									<div style={{ marginTop: '60px' }}>
-										<div>
-											<p
-												style={{
-													marginRight: '20px',
-													fontSize: '20px',
-													fontWeight: 'bold',
-												}}>
-												Order Total: ₹ {items.totalPrice}
-											</p>
-											<small style={{ marginRight: '20px' }}>
-												Payment Method:{items.paymentMethod} <br />
-												status:
-												{items.isPaid == false ? (
-													<p style={{ color: 'red' }}>payment pending</p>
-												) : (
-													<p style={{ color: 'green' }}>paid</p>
-												)}
-											</small>
+										<div style={{ marginTop: '60px' }}>
+											<div>
+												<p
+													style={{
+														marginRight: '20px',
+														fontSize: '20px',
+														fontWeight: 'bold',
+													}}>
+													Order Total: ₹ {items.totalPrice}
+												</p>
+												<small style={{ marginRight: '20px' }}>
+													Payment Method:{items.paymentMethod} <br />
+													status:
+													{items.isPaid == false ? (
+														<p style={{ color: 'red' }}>payment pending</p>
+													) : (
+														<p style={{ color: 'green' }}>paid</p>
+													)}
+												</small>
 
-											<br />
-										</div>
-										<div>
-											<h4>
-												Delivery Status:
-												{items.isDeliverd == false ? (
-													<p style={{ color: 'red' }}>Not Delivered</p>
-												) : (
-													<p style={{ color: 'green' }}>Delivered</p>
-												)}
-											</h4>
+												<br />
+											</div>
+											<div>
+												<h4>
+													Delivery Status:
+													{items.isDeliverd == false ? (
+														<p style={{ color: 'red' }}>Not Delivered</p>
+													) : (
+														<p style={{ color: 'green' }}>Delivered</p>
+													)}
+												</h4>
+											</div>
 										</div>
 									</div>
-								</div>
-								<hr />
-							</React.Fragment>
-						))}
+									<hr />
+								</React.Fragment>
+							))
+							.reverse()}
 				</React.Fragment>
 			)}
 		</div>

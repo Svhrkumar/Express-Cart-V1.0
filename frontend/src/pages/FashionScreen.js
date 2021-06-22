@@ -29,7 +29,7 @@ const FashionScreen = () => {
 
 	return (
 		<div>
-			<div style={{ marginTop: '30px' }}>
+			<div>
 				<SubNavbar />
 			</div>
 			<main>
