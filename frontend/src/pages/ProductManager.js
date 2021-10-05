@@ -161,31 +161,32 @@ const ProductManager = () => {
 							</tr>
 						</thead>
 						<tbody>
-							{electronicItems.map((product) => (
-								<tr key={product._id}>
-									<td>{product._id}</td>
-									<td>{product.name.slice(0, 26)}</td>
-									<td>{product.price}</td>
-									<td>{product.category}</td>
-									<td>{product.Brand}</td>
-									<td>
-										<button
-											type='button'
-											className='details-btn'
-											onClick={() =>
-												history.push(`/product/${product._id}/edit`)
-											}>
-											Edit
-										</button>
-										<button
-											type='button'
-											className='details-btn'
-											onClick={() => deleteHandler(product._id)}>
-											Delete
-										</button>
-									</td>
-								</tr>
-							))}
+							{electronicItems &&
+								electronicItems.map((product) => (
+									<tr key={product._id}>
+										<td>{product._id}</td>
+										<td>{product.name.slice(0, 26)}</td>
+										<td>{product.price}</td>
+										<td>{product.category}</td>
+										<td>{product.Brand}</td>
+										<td>
+											<button
+												type='button'
+												className='details-btn'
+												onClick={() =>
+													history.push(`/product/${product._id}/edit`)
+												}>
+												Edit
+											</button>
+											<button
+												type='button'
+												className='details-btn'
+												onClick={() => deleteHandler(product._id)}>
+												Delete
+											</button>
+										</td>
+									</tr>
+								))}
 						</tbody>
 					</table>
 				</div>

@@ -58,7 +58,7 @@ const ProductDetailsScreen = (props) => {
 			<div>
 				<SubNavbar />
 			</div>
-			<SimpleBreadcrumbs />
+
 			{loading ? (
 				<div
 					style={{
@@ -194,18 +194,22 @@ const ProductDetailsScreen = (props) => {
 						<div>
 							<h3 style={{ margin: '5px 30px' }}>Similar Products</h3>
 							{product.subcategory === 'Mobile' ? (
-								<div className='flex-scroll-ctn'>
-									{mobiles &&
-										mobiles.map((items) => (
-											<ElectronicCards key={items._id} item={items} />
-										))}
+								<div className='scroll-cards-ctn'>
+									<div className='scroll-cards-ctn-in'>
+										{mobiles &&
+											mobiles.map((items) => (
+												<ElectronicCards key={items._id} item={items} />
+											))}
+									</div>
 								</div>
 							) : (
-								<div className='flex-scroll-ctn'>
-									{laptops &&
-										laptops.map((items) => (
-											<ElectronicCards key={items._id} item={items} />
-										))}
+								<div className='scroll-cards-ctn'>
+									<div className='scroll-cards-ctn-in'>
+										{laptops &&
+											laptops.map((items) => (
+												<ElectronicCards key={items._id} item={items} />
+											))}
+									</div>
 								</div>
 							)}
 						</div>
