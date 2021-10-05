@@ -19,47 +19,55 @@ const Navbar = () => {
 	};
 	// console.log('-------nava user-------', user && user.user.name);
 	return (
-		<header className='row'>
+		<header className='nav-container'>
+			<div className='hamburger'>
+				<i class='fas fa-bars'></i>
+			</div>
+
 			<div className='nav-title'>
-				<Link to={'/'}>
+				<Link to='/'>
 					<img src={logo} alt='cartExpress' className='logo' />
 				</Link>
 			</div>
-			<div></div>
-			<div className='nav-links'>
+
+			<ul className='nav-links'>
 				{user && user.user && user.user.name ? (
-					<Link to={'/cart/:id'}>
-						<i
-							class='fa fa-shopping-cart fa-2x icon-color '
-							aria-hidden='true'></i>
-						<div className='cart-count-icon'>
-							<span className='cart-icon'>
-								{' '}
-								{cartItems.length >= 0 && (
-									<span style={{ marginBottom: '10px' }}>
-										{cartItems.length}
-									</span>
-								)}{' '}
-							</span>
-						</div>
-					</Link>
+					<li>
+						<Link to={'/cart/:id'}>
+							<i
+								class='fa fa-shopping-cart fa-2x icon-color '
+								aria-hidden='true'></i>
+							<div className='cart-count-icon'>
+								<span className='cart-icon'>
+									{' '}
+									{cartItems.length >= 0 && (
+										<span style={{ marginBottom: '10px' }}>
+											{cartItems.length}
+										</span>
+									)}{' '}
+								</span>
+							</div>
+						</Link>
+					</li>
 				) : (
-					<Link
-						to={'/signin'}
-						style={{
-							margin: '15px 25px',
-							fontSize: '15px',
-							backgroundColor: '#ffffff',
-							borderRadius: '999px',
-							padding: '10px 20px',
-							color: '#e07c24',
-						}}>
-						Register
-					</Link>
+					<li>
+						<Link
+							to={'/signin'}
+							style={{
+								margin: '15px 25px',
+								fontSize: '15px',
+								backgroundColor: '#ffffff',
+								borderRadius: '999px',
+								padding: '10px 20px',
+								color: '#e07c24',
+							}}>
+							Register
+						</Link>
+					</li>
 				)}
 
 				{user && user.user && user.user.name ? (
-					<div className='dropdown'>
+					<li className='dropdown'>
 						<Link>
 							{user && user.user && user.user.name}
 
@@ -80,23 +88,25 @@ const Navbar = () => {
 								</Link>
 							</li>
 						</ul>
-					</div>
+					</li>
 				) : (
-					<Link
-						to={'/signin'}
-						style={{
-							margin: '15px 25px',
-							fontSize: '15px',
-							backgroundColor: '#ffffff',
-							borderRadius: '999px',
-							padding: '10px 20px',
-							color: '#e07c24',
-						}}>
-						Sign In
-					</Link>
+					<li>
+						<Link
+							to={'/signin'}
+							style={{
+								margin: '15px 25px',
+								fontSize: '15px',
+								backgroundColor: '#ffffff',
+								borderRadius: '999px',
+								padding: '10px 20px',
+								color: '#e07c24',
+							}}>
+							Sign In
+						</Link>
+					</li>
 				)}
 				{user && user.user && user.user.isSeller && (
-					<div className='dropdown'>
+					<li className='dropdown'>
 						<Link to='#seller'>
 							Seller<i className='fa fa-caret-down'></i>
 						</Link>
@@ -108,10 +118,10 @@ const Navbar = () => {
 								<Link to='/orderlist/seller'>Orders</Link>
 							</li>
 						</ul>
-					</div>
+					</li>
 				)}
 				{user && user.user && user.user.isAdmin && (
-					<div className='dropdown'>
+					<li className='dropdown'>
 						<Link to='#admin'>
 							Admin <i className='fa fa-caret-down'></i>
 						</Link>
@@ -132,6 +142,44 @@ const Navbar = () => {
 								<Link to='/offers/Manager'>Manage Offers</Link>
 							</li>
 						</ul>
+					</li>
+				)}
+			</ul>
+			<div className='mobile-view-cart'>
+				{user && user.user && user.user.name ? (
+					<div style={{ marginBottom: '20px' }}>
+						<Link to={'/cart/:id'}>
+							<div className='cart-count-icon'>
+								<span className='cart-icon'>
+									{' '}
+									{cartItems.length >= 0 && (
+										<span
+											className='mv-cart-count'
+											style={{ marginBottom: '10px' }}>
+											{cartItems.length}
+										</span>
+									)}{' '}
+								</span>
+							</div>
+							<i
+								class='fa fa-shopping-cart fa-2x icon-color '
+								aria-hidden='true'></i>
+						</Link>
+					</div>
+				) : (
+					<div>
+						<Link
+							to={'/signin'}
+							style={{
+								margin: '15px 25px',
+								fontSize: '15px',
+								backgroundColor: '#ffffff',
+								borderRadius: '999px',
+								padding: '10px 20px',
+								color: '#e07c24',
+							}}>
+							Register
+						</Link>
 					</div>
 				)}
 			</div>
