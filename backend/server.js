@@ -43,7 +43,7 @@ app.use('/api/offerUploads', offerUploadRouter);
 app.use('/api/uploads', uploadRouter);
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
-app.use(express.static(path.join(__dirname, '/frontend/build')));
+app.use('/uploads', express.static(path.join(__dirname, '/frontend/build')));
 app.get('*', (req, res) =>
 	res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
 );
