@@ -42,7 +42,7 @@ const Product = (props) => {
 					<MessageBox varient='danger'>{error}</MessageBox>
 				</div>
 			) : (
-				<div className='row top '>
+				<div className='row'>
 					<div className='product-img-ctn'>
 						<div className='product-img-display'>
 							{selectImage === null ? (
