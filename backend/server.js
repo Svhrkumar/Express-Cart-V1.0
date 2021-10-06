@@ -43,16 +43,14 @@ app.use('/api/offerUploads', offerUploadRouter);
 app.use('/api/uploads', uploadRouter);
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
-app.use('/uploads', express.static(path.join(__dirname, '/frontend/build')));
-app.get('*', (req, res) =>
-	res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
-);
+
 app.use('/api/orders', orderRouter);
 app.use('/api/offers', offerRouter);
 app.use('/api/product/electronics', electronicRouter);
 app.get('/api/config/paypal', (req, res) => {
 	res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
 });
+
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 app.use(express.static(path.join(__dirname, '/frontend/build')));
