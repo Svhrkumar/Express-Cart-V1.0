@@ -658,6 +658,7 @@ ul {
 	display: grid;
 	place-items: center;
 	background: transparent linear-gradient(90deg, #f4be2c 0%, #e07c24 100%) 0% 0%;
+	padding: 155px;
 }
 
 .sub-ctn {
