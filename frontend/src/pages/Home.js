@@ -83,7 +83,9 @@ const Home = () => {
 												</div>
 											</Link>
 											<div className='scroll-card-content'>
-												<Link to={`/products/electronics/${product._id}`}>
+												<Link
+													to={`/products/electronics/${product._id}`}
+													style={{ color: 'black' }}>
 													<p style={{ margin: '10px' }}>
 														<b>{product.name.slice(0, 19)}</b>
 													</p>
@@ -113,24 +115,32 @@ const Home = () => {
 								{products &&
 									products.slice(0, 6).map((product) => (
 										<div className='scroll-card' key={product._id}>
-											<div className='scroll-card-image-ctn'>
-												<img
-													src={product.image[0]}
-													className='scroll-card-image'
-												/>
-											</div>
+											<Link to={`/products/${product._id}`}>
+												<div className='scroll-card-image-ctn'>
+													<img
+														src={product.image[0]}
+														className='scroll-card-image'
+													/>
+												</div>
+											</Link>
 											<div className='scroll-card-content'>
-												<p style={{ margin: '10px' }}>
-													<b>{product.name.slice(0, 19)}</b>
-												</p>
-												<p style={{ margin: '10px' }}>
-													<b>₹ {product.price}</b>
-												</p>
+												<Link
+													to={`/products/${product._id}`}
+													style={{ color: 'black' }}>
+													<p style={{ margin: '10px' }}>
+														<b>{product.name.slice(0, 19)}</b>
+													</p>
+													<p style={{ margin: '10px' }}>
+														<b>₹ {product.price}</b>
+													</p>
 
-												<p style={{ color: '#22CB5C' }}>
-													{Math.floor((100 * product.discount) / product.price)}
-													% off
-												</p>
+													<p style={{ color: '#22CB5C' }}>
+														{Math.floor(
+															(100 * product.discount) / product.price
+														)}
+														% off
+													</p>
+												</Link>
 											</div>
 											<div></div>
 										</div>

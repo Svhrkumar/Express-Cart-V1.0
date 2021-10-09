@@ -34,9 +34,9 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/expresscart', {
 // 	res.send(data.products);
 // });
 
-app.get('/', (req, res) => {
-	res.send('Server is ready');
-});
+// app.get('/', (req, res) => {
+// 	res.send('Server is ready');
+// });
 
 //Routers
 app.use('/api/offerUploads', offerUploadRouter);
@@ -52,6 +52,10 @@ app.get('/api/config/paypal', (req, res) => {
 });
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+app.use(express.static(path.join(__dirname, '/frontend/build')));
+app.get('*', (req, res) =>
+	res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
+);
 //Server
 const port = process.env.PORT || 9000;
 app.listen(9000, () => {
