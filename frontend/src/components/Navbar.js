@@ -130,7 +130,7 @@ const Navbar = () => {
 						</li>
 						<li style={{ marginTop: '10px' }}>
 							<Link
-								to={'/signin'}
+								to={'/register'}
 								style={{
 									margin: '15px 25px',
 									fontSize: '15px',
