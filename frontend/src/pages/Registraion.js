@@ -41,9 +41,9 @@ const Registration = (props) => {
 	}, [props.history, redirect, user]);
 
 	return (
-		<div className='main-ctn'>
+		<div className='main-ctn' style={{ padding: '70px' }}>
 			<div className='sub-ctn'>
-				<div className='login-img'>
+				<div className='login-img' style={{ marginTop: '100px' }}>
 					<img src={login} height='300px' width='400px' />
 				</div>
 				<div className='card--register-ctn  '>
