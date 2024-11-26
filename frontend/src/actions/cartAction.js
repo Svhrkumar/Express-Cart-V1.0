@@ -8,6 +8,8 @@ import {
 	ORDER_PLACED,
 } from '../types/type';
 
+
+
 export const addToCartItems =
 	(productId, qty) => async (dispatch, getState) => {
 		const { data } = await axios.get(`/api/products/${productId}`);
